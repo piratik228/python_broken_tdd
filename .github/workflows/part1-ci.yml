@@ -21,7 +21,7 @@ jobs:
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v7
-      - uses: astral-sh/setup-uv@v10
+      - uses: astral-sh/setup-uv@v5
         with:
           python-version: "3.12"
           enable-cache: true
@@ -36,7 +36,7 @@ jobs:
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v7
-      - uses: astral-sh/setup-uv@v10
+      - uses: astral-sh/setup-uv@v5
         with:
           python-version: "3.12"
           enable-cache: true
@@ -51,7 +51,7 @@ jobs:
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v7
-      - uses: astral-sh/setup-uv@v10
+      - uses: astral-sh/setup-uv@v5
         with:
           python-version: "3.12"
           enable-cache: true
@@ -70,14 +70,14 @@ jobs:
         python-version: ["3.12", "3.13"]
     steps:
       - uses: actions/checkout@v7
-      - uses: astral-sh/setup-uv@v10
+      - uses: astral-sh/setup-uv@v5
         with:
           python-version: ${{ matrix.python-version }}
           enable-cache: true
       - run: uv sync --frozen
       - run: ./scripts/setup.sh --check
       - name: pytest
-        run: uv run pytest -v
+        run: uv run pytest --cov=src -v
       - name: отчёт о покрытии
         if: matrix.python-version == '3.12'
         run: uv run coverage report

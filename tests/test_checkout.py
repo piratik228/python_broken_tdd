@@ -13,7 +13,7 @@ Run one test at a time while you work:
     uv run pytest tests/test_checkout.py -k tier -x
 """
 
-from shop.checkout import calculate_order_total, validate_order
+from shop.checkout import calculate_order_total
 
 
 def line(sku: str = "SKU-1", qty: str = "1", unit_price_kopecks: str = "10000") -> dict[str, str]:
